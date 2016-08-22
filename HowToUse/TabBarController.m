@@ -6,13 +6,17 @@
 //  Copyright © 2016年 梅晴光. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "TabBarController.h"
 
-@interface ViewController ()
+@interface TabBarController ()
 
 @end
 
-@implementation ViewController
+@implementation TabBarController
+
+//- (void)loadView {
+//    [self loadView];
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

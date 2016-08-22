@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "TabBarController.h"
+#import "NavController.h"
 
 @interface AppDelegate ()
 
@@ -16,10 +18,35 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    NavController *nav1 = [[NavController alloc] initWithTitle:@"首页"];
+    UITabBarItem *tabBarItem1 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:1];
+    nav1.tabBarItem = tabBarItem1;
+
+    NavController *nav2 = [[NavController alloc] initWithTitle:@"教程"];
+    UITabBarItem *tabBarItem2 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:2];
+    nav2.tabBarItem = tabBarItem2;
+    
+    NavController *nav3 = [[NavController alloc] initWithTitle:@"心愿单"];
+    UITabBarItem *tabBarItem3 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:3];
+    nav3.tabBarItem = tabBarItem3;
+    
+    NavController *nav4 = [[NavController alloc] initWithTitle:@"我的"];
+    UITabBarItem *tabBarItem4 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:4];
+    nav4.tabBarItem = tabBarItem4;
+    NSArray *navigations = @[nav1, nav2, nav3, nav4];
+    
+    TabBarController *tabBar = [[TabBarController alloc] init];
+    [tabBar setViewControllers:navigations animated:YES];
+    self.window.rootViewController = tabBar;
+    
+    
+    
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
